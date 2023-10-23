@@ -1,0 +1,38 @@
+version: '3'
+services:
+  client:
+    image: ivy2023/yoloclient_ip2:v1.0.0
+    ports:
+      - 3000:3000
+    stdin_open: true
+    depends_on:
+      - backend
+    networks:
+      - yolo_ip2_network
+
+  backend:
+    image: ivy2023/yolobackend_ip2:v1.0.0
+    depends_on:
+      - database
+    ports:
+      - 10000:10000
+    environment: 
+      - MONGODB_URI=mongodb://database:27018
+    networks:
+      - yolo_ip2_network
+
+  database:
+    image: mongo
+    ports:
+      - 27018:27018
+    networks:
+      - yolo_ip2_network
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+
+networks:
+  yolo_ip2_network:
+      driver: bridge
