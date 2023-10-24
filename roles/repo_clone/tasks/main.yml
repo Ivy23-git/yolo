@@ -1,0 +1,6 @@
+---
+# tasks file for repo_clone
+- name: Clone the Repository
+  git:
+    repo: https://github.com/Ivy23-git/yolo
+    dest: /home/ivy/Development/Devops/yolo

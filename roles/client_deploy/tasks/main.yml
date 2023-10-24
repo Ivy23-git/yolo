@@ -1,0 +1,5 @@
+---
+# tasks file for client_deploy
+- name: Deployment of the Client
+  service:
+    name: client-deploy

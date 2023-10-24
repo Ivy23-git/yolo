@@ -1,0 +1,5 @@
+---
+# tasks file for database_config
+- name: Database Configuration
+  service:
+    name: database-configuration

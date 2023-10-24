@@ -1,0 +1,6 @@
+---
+# tasks file for docker_install
+- name: Install Docker and Docker Compose
+  apt:
+    name: docker.io
+    state: present

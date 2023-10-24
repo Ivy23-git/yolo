@@ -1,0 +1,5 @@
+---
+# tasks file for backend_deploy
+- name: Deployment of Backend
+  service:
+    name: backend-deploy
