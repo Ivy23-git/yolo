@@ -1,0 +1,27 @@
+---
+- name: Yolo Playbook
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install Docker and Docker Compose
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Clone the Repository
+      git:
+        repo: https://github.com/Ivy23-git/yolo
+        dest: /home/ivy/Development/Devops/yolo
+
+    - name: Database Configuration
+      service:
+        name: database-configuration
+
+    - name: Deployment of Backend
+      service:
+        name: backend-deploy
+
+    - name: Deployment of the Client
+      service:
+        name: client-deploy
