@@ -21,7 +21,7 @@ spec:
         - name: MONGO_URI
           value: "mongodb://mongodb-service:27017/yolo"
       ports:
-        - containerPort: 10000
+        - containerPort: 5000
 
 ---
 apiVersion: v1
