@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: yolo-backend
+      image: ivy2023/yolobackend_ip2:v1.0.0
+      env:
+        - name: MONGO_URI
+          value: "mongodb://mongodb-service:27017/yolo"
+      ports:
+        - containerPort: 10000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  ports:
+    - name: backend
+      targetPort: 10000
+      port: 10000
+      protocol: TCP
+  selector:
+    app: backend
+  type: LoadBalancer
